@@ -12,7 +12,7 @@ buster.testCase("End-to-end application", {
 
 	"can swipe 'tre' and get 'tree'": function() {
 		function getKeyDOMElement(key) {
-			return document.getElementById(key);
+			return document.getElementById(key +'-key');
 		}
 
 		var tKey = getKeyDOMElement('t');
@@ -22,11 +22,14 @@ buster.testCase("End-to-end application", {
 		var dragStartEvent = new Event('dragstart');
 		var dragEvent = new Event('drag');
 		var dragEndEvent = new Event('dragend');
-		var clickEvent = new Event('click');
 
-		tKey.dispatchEvent(dragStartEvent);
 		rKey.dispatchEvent(dragEvent);
 		eKey.dispatchEvent(dragEndEvent);
+
+		var suggestion = document.getElementById('suggestion');
+
+		var clickEvent = new Event('click');
+		suggestion.dispatchEvent(clickEvent);
 
 		var paragraphContainsTree = paragraphText.indexOf('tree') > -1;
 		assert.isTrue(paragraphContainsTree);
