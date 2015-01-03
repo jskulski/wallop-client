@@ -9,15 +9,20 @@ var template = '' +
 
 buster.testCase("End-to-end application", {
 
-	"can swipe 'tre' and get 'tree'": function() {
+	beforeEach: function() {
 		var container = document.createElement('div');
 		container.className = 'container';
 		var body = document
-					.getElementsByTagName('body')[0]
-					.appendChild(container);
+			.getElementsByTagName('body')[0]
+			.appendChild(container);
 		var cont = document.getElementsByClassName('container')[0];
 		cont.innerHTML = template;
 
+		var mock = document.getElementById('dom-mock');
+		var wallop = new Wallop(mock);
+	},
+
+	"can swipe 'tre' and get 'tree'": function() {
 		var tKey = document.getElementById('t-key');
 		var rKey = document.getElementById('r-key');
 		var eKey = document.getElementById('e-key');
@@ -31,13 +36,12 @@ buster.testCase("End-to-end application", {
 		eKey.dispatchEvent(dragEndEvent);
 
 		var suggestion = document.getElementById('suggestion');
-
 		var clickEvent = new Event('click');
 		suggestion.dispatchEvent(clickEvent);
 
 		var paragraphElement = document.getElementById('paragraph');
 		var paragraphText = paragraphElement.innerHTML;
-		var paragraphContainsTree = paragraphText.indexOf('tree') > -1;
+		var paragraphContainsTree = paragraphText == 'tree';
 		assert.isTrue(paragraphContainsTree);
 	}
 
