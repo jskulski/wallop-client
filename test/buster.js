@@ -24,7 +24,7 @@ config["End-to-end"] = {
         "lib/**/*.js"
     ],
     tests: [
-        "test/*-test.js"
+        "test/first-test.js"
     ],
     extensions: [require('buster-selenium')],
     'buster-selenium': {
