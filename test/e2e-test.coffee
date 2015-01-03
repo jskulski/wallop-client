@@ -3,19 +3,24 @@ chai = require 'chai'
 chai.use require 'chai-as-promised'
 expect = chai.expect
 
+connect = require 'connect'
+serveStatic = require 'serve-static'
+
 before ->
 	@timeout 10000
+  connect().use(serveStatic(__dirname)).listen(8080)
 	@driver = new selenium.Builder()
     .withCapabilities(selenium.Capabilities.chrome())
     .build()
 	@driver.getWindowHandle()
 
+
 after ->
   @driver.quit()
 
-describe 'Webdriver tutorial', ->
+describe 'Swype', ->
   beforeEach ->
-    @driver.get 'http://bites.goodeggs.com/posts/selenium-webdriver-nodejs-tutorial/'
+    @driver.get 'http://localhost:8080/index.html'
 
   it 'has the title of the post in the window\'s title', ->
     expect(@driver.getTitle()).to.eventually.contain
