@@ -1,11 +1,13 @@
 wallop-client
 =============
 
-Swype / Google Keyboard attempt for the web
+Swype / Google Keyboard written in javascript
 
 
+Running Tests
+====
 
-Known Issues
-=====
+`buster-static`
 
-Have to have `chromedriver` in PATH
+then load that in your browser
+
