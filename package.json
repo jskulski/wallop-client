@@ -11,12 +11,10 @@
     "chromedriver": "^2.12.0"
   },
   "devDependencies": {
+    "buster": "^0.7.18",
     "coffee-script": "^1.8.0",
     "mocha": "^2.0.1",
     "protractor": "^1.5.0"
-  },
-  "scripts": {
-    "test": "./node_modules/.bin/mocha test/e2e-test.coffee --compilers coffee:coffee-script/register"
   },
   "repository": {
     "type": "git",

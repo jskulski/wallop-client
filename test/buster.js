@@ -1,21 +1,5 @@
 var config = module.exports;
 
-config["Selenium Tests"] = {
-    rootPath: "../",
-    environment: "node",
-    extensions: [require("buster-selenium")],
-    tests: ["test/test-test.js"],
-    "buster-selenium": {
-        driver: 'wd',
-        config: {
-            server: {},
-            desiredCapabilities: {
-                browserName: 'phantomjs'
-            }
-        }
-    }
-};
-
 config["End-to-end"] = {
     rootPath: "../",
     environment: "browser",
@@ -24,7 +8,7 @@ config["End-to-end"] = {
         "lib/**/*.js"
     ],
     tests: [
-        "test/first-test.js"
+        "test/*-test.js"
     ],
     extensions: [require('buster-selenium')],
     'buster-selenium': {
