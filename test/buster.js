@@ -1,6 +1,6 @@
 var config = module.exports;
 
-config["End-to-end"] = {
+config["Tests"] = {
     rootPath: "../",
     environment: "browser",
     sources: [
@@ -8,7 +8,8 @@ config["End-to-end"] = {
         "lib/**/*.js"
     ],
     tests: [
-        "test/*-test.js"
+        "test/integration/*-test.js",
+        "test/unit/*-test.js"
     ],
     extensions: [require('buster-selenium')],
     'buster-selenium': {
