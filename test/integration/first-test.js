@@ -12,15 +12,20 @@ buster.testCase("End-to-end application", {
 
 	setUp: function() {
 		var container = document.createElement('div');
-		container.className = 'container';
+		container.id = 'container';
 		var body = document
 			.getElementsByTagName('body')[0]
 			.appendChild(container);
-		var cont = document.getElementsByClassName('container')[0];
+		var cont = document.getElementById('container');
 		cont.innerHTML = template;
 
 		var mock = document.getElementById('dom-mock');
 		var wallop = new Wallop(mock);
+	},
+
+	tearDown: function() {
+		var container = document.getElementById('container');
+		container.innerHTML = '';
 	},
 
 	"can swipe 'tre' and get 'tree'": function() {
